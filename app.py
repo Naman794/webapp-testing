@@ -7,7 +7,8 @@ from config import (
     SECRET_KEY,
     OAUTH2_SCOPE,
     OAUTH2_BASE_URL,
-    OAUTH2_TOKEN_URL
+    OAUTH2_TOKEN_URL,
+    DISCORD_REDIRECT_URI
 )
 import os
 
