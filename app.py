@@ -73,4 +73,4 @@ def redirect_unauthorized(e):
     return redirect(url_for("login"))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=os.environ.get("PORT", 1646))
