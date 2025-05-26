@@ -2,35 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Raise a Ticket</title>
+    <title>Submit a Ticket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50 min-h-screen p-6">
-    <div class="max-w-xl mx-auto bg-white p-6 shadow rounded">
-        <h1 class="text-2xl font-bold mb-4">Submit a Ticket</h1>
-        
+<body class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
+
+    <div class="w-full max-w-xl bg-white shadow-lg rounded-xl p-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Raise a Support Ticket</h1>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Server Logo" class="h-10 w-10 rounded-full">
         {% if success %}
-            <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
-                Ticket submitted successfully!
-            </div>
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded">
+            <p>✅ Your ticket was submitted successfully!</p>
+        </div>
         {% endif %}
 
-        <form method="POST">
-            <label for="issue" class="block mb-2 font-semibold">Describe your issue:</label>
-            <textarea name="issue" rows="5" required
-                class="w-full border border-gray-300 p-3 rounded mb-4"
-                placeholder="What problem are you facing?"></textarea>
-            
-            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-                Submit
-            </button>
+        <form method="POST" class="space-y-6">
+            <div>
+                <label for="issue" class="block text-gray-700 font-medium mb-2">Describe your issue</label>
+                <textarea name="issue" rows="6" required class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" placeholder="What's not working or what do you need help with?"></textarea>
+            </div>
+
+            <div class="text-right">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition">
+                    Submit Ticket
+                </button>
+            </div>
         </form>
 
-        <div class="mt-4">
-            <a href="{{ url_for('home') }}" class="text-blue-600 hover:underline">
-                ⬅ Back to Dashboard
-            </a>
+        <div class="mt-6 text-center">
+            <a href="{{ url_for('home') }}" class="text-blue-500 hover:underline">← Back to Dashboard</a>
         </div>
     </div>
+
 </body>
 </html>

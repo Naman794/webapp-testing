@@ -3,34 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 min-h-screen">
-    <div class="flex items-center bg-white p-4 shadow-md">
-        <img src="{{ url_for('static', filename='server_logo.png') }}" alt="Server Logo" class="h-12 w-12 mr-4">
-        <h1 class="text-xl font-semibold">Discord Dashboard</h1>
-        <div class="ml-auto">
-            <a href="{{ url_for('logout') }}" class="text-red-500 hover:underline">Logout</a>
-        </div>
-    </div>
+<body class="bg-gray-100 min-h-screen flex flex-col">
 
-    <div class="p-6">
-        <h2 class="text-2xl font-bold mb-4">Welcome, {{ user.name }}#{{ user.discriminator }}!</h2>
-        
-        <h3 class="text-lg font-semibold mb-2">Your Servers:</h3>
-        <ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {% for guild in guilds %}
-                <li class="bg-white p-4 rounded shadow text-center">
+    <!-- Header -->
+    <header class="bg-white shadow-md p-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Server Logo" class="h-10 w-10 rounded-full">
+            <h1 class="text-xl font-semibold text-gray-800">Discord Dashboard</h1>
+        </div>
+        <a href="{{ url_for('logout') }}" class="text-red-500 hover:underline">Logout</a>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-grow container mx-auto px-6 py-8">
+        <h2 class="text-2xl font-bold mb-2 text-gray-800">Welcome, {{ user.name }}#{{ user.discriminator }}!</h2>
+
+        <section class="mt-6">
+            <h3 class="text-lg font-semibold text-gray-700 mb-3">Your Servers</h3>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {% for guild in guilds %}
+                <li class="bg-white rounded-lg shadow p-4 text-center text-gray-800 font-medium">
                     {{ guild.name }}
                 </li>
-            {% endfor %}
-        </ul>
+                {% endfor %}
+            </ul>
+        </section>
 
-        <div class="mt-8">
-            <a href="{{ url_for('ticket') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Raise a Ticket
+        <section class="mt-10 text-center">
+            <a href="{{ url_for('ticket') }}" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-md shadow hover:bg-blue-700 transition">
+                🎫 Raise a Ticket
             </a>
-        </div>
-    </div>
+        </section>
+    </main>
+
 </body>
 </html>
