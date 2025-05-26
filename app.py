@@ -1,4 +1,5 @@
-from flask import Flask, redirect, url_for, session, render_template
+import flask
+from flask import Flask, redirect, url_for, session, render_template, request
 from flask_session import Session
 from flask_discord import DiscordOAuth2Session, requires_authorization, Unauthorized
 from config import (
@@ -48,6 +49,17 @@ def logout():
     discord.revoke()
     session.clear()
     return redirect(url_for("home"))
+
+@app.route("/ticket", methods=["GET", "POST"])
+def ticket():
+    success = False
+    if discord.authorized and request.method == "POST":
+        issue = request.form.get("issue")
+        # You can store or log this issue however you like
+        print(f"New ticket submitted: {issue}")
+        success = True
+
+    return render_template("tickets.html", success=success)
 
 @app.errorhandler(Unauthorized)
 def handle_unauth(e):
