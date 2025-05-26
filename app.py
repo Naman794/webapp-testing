@@ -2,9 +2,9 @@ from flask import Flask, redirect, url_for, session, render_template
 from flask_session import Session
 from flask_discord import DiscordOAuth2Session, requires_authorization, Unauthorized
 from config import (
-    CLIENT_ID,
-    CLIENT_SECRET,
-    FLASK_SECRET_KEY,
+    DISCORD_CLIENT_ID,
+    DISCORD_CLIENT_SECRET,
+    SECRET_KEY,
     OAUTH2_SCOPE,
     OAUTH2_BASE_URL,
     OAUTH2_TOKEN_URL
@@ -14,12 +14,12 @@ import os
 app = Flask(__name__)
 
 # Required Config
-app.secret_key = FLASK_SECRET_KEY
+app.secret_key = SECRET_KEY
 app.config["SESSION_TYPE"] = "filesystem"
 
 # Discord OAuth2 Config
-app.config["DISCORD_CLIENT_ID"] = CLIENT_ID
-app.config["DISCORD_CLIENT_SECRET"] = CLIENT_SECRET
+app.config["DISCORD_CLIENT_ID"] = DISCORD_CLIENT_ID
+app.config["DISCORD_CLIENT_SECRET"] = DISCORD_CLIENT_SECRET
 app.config["DISCORD_REDIRECT_URI"] = os.environ["DISCORD_REDIRECT_URI"]
 
 # OAuth2 Session
