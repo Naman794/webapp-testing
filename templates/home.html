@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord Dashboard</title>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='server_logo.png') }}" alt="Server Logo" width="100">
+    <h1>Welcome, {{ user.name }}!</h1>
+    <h2>Your Servers:</h2>
+    <ul>
+        {% for guild in guilds %}
+            <li>{{ guild.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('ticket') }}">Raise a Ticket</a><br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
