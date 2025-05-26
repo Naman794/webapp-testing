@@ -3,16 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Raise a Ticket</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Submit a Ticket</h1>
-    {% if success %}
-        <p>Ticket submitted successfully!</p>
-    {% endif %}
-    <form method="POST">
-        <textarea name="issue" rows="5" cols="50" placeholder="Describe your issue..."></textarea><br>
-        <button type="submit">Submit</button>
-    </form>
-    <a href="{{ url_for('index') }}">Back to Dashboard</a>
+<body class="bg-gray-50 min-h-screen p-6">
+    <div class="max-w-xl mx-auto bg-white p-6 shadow rounded">
+        <h1 class="text-2xl font-bold mb-4">Submit a Ticket</h1>
+        
+        {% if success %}
+            <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
+                Ticket submitted successfully!
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            <label for="issue" class="block mb-2 font-semibold">Describe your issue:</label>
+            <textarea name="issue" rows="5" required
+                class="w-full border border-gray-300 p-3 rounded mb-4"
+                placeholder="What problem are you facing?"></textarea>
+            
+            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                Submit
+            </button>
+        </form>
+
+        <div class="mt-4">
+            <a href="{{ url_for('index') }}" class="text-blue-600 hover:underline">
+                ⬅ Back to Dashboard
+            </a>
+        </div>
+    </div>
 </body>
 </html>

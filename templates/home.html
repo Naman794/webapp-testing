@@ -2,18 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Discord Dashboard</title>
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <img src="{{ url_for('static', filename='server_logo.png') }}" alt="Server Logo" width="100">
-    <h1>Welcome, {{ user.name }}!</h1>
-    <h2>Your Servers:</h2>
-    <ul>
-        {% for guild in guilds %}
-            <li>{{ guild.name }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{{ url_for('ticket') }}">Raise a Ticket</a><br>
-    <a href="{{ url_for('logout') }}">Logout</a>
+<body class="bg-gray-100 min-h-screen">
+    <div class="flex items-center bg-white p-4 shadow-md">
+        <img src="{{ url_for('static', filename='server_logo.png') }}" alt="Server Logo" class="h-12 w-12 mr-4">
+        <h1 class="text-xl font-semibold">Discord Dashboard</h1>
+        <div class="ml-auto">
+            <a href="{{ url_for('logout') }}" class="text-red-500 hover:underline">Logout</a>
+        </div>
+    </div>
+
+    <div class="p-6">
+        <h2 class="text-2xl font-bold mb-4">Welcome, {{ user.name }}#{{ user.discriminator }}!</h2>
+        
+        <h3 class="text-lg font-semibold mb-2">Your Servers:</h3>
+        <ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {% for guild in guilds %}
+                <li class="bg-white p-4 rounded shadow text-center">
+                    {{ guild.name }}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="mt-8">
+            <a href="{{ url_for('ticket') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                Raise a Ticket
+            </a>
+        </div>
+    </div>
 </body>
 </html>
