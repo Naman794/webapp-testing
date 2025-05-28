@@ -15,10 +15,13 @@
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
   <header class="bg-gray-100 dark:bg-gray-800 shadow">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-lg font-semibold"><a href="/">MyApp</a></div>
+      <div class="flex items-center space-x-3">
+        <img src="/static/logo.png" alt="Logo" class="w-10 h-10 rounded">
+        <div class="text-lg font-semibold"><a href="/">MyApp</a></div>
+      </div>
       <nav class="space-x-4">
         <a href="/" class="hover:underline">Home</a>
-        <a href="/tickets" class="hover:underline">Submit Ticket</a>
+        <a href="/ticket" class="hover:underline">Submit Ticket</a>
         <a href="/logout" class="hover:underline">Logout</a>
         <button onclick="document.documentElement.classList.toggle('dark')" class="ml-4 px-2 py-1 rounded bg-gray-200 dark:bg-gray-700">Toggle Theme</button>
       </nav>
