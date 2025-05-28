@@ -22,7 +22,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 # Discord OAuth2 Config
 app.config["DISCORD_CLIENT_ID"] = DISCORD_CLIENT_ID
 app.config["DISCORD_CLIENT_SECRET"] = DISCORD_CLIENT_SECRET
-app.config["DISCORD_REDIRECT_URI"] = os.environ["DISCORD_REDIRECT_URI"]
+app.config["DISCORD_REDIRECT_URI"] = DISCORD_REDIRECT_URI
 
 # OAuth2 Session
 Session(app)
